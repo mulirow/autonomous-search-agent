@@ -18,5 +18,5 @@ function setup() {
 
 function draw() {
     grid.display();
-    agent.display();
+    agent.run();
 }
