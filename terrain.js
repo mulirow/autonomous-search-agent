@@ -63,12 +63,4 @@ class Grid {
         fill(0, 0, 255);
         rect(this.endPoint[0] * this.cellSize, this.endPoint[1] * this.cellSize, this.cellSize, this.cellSize);
     }
-
-    getStart(){
-      return this.startPoint;
-    }
-
-    getTarget(){
-      return this.endPoint;
-    }
 }
