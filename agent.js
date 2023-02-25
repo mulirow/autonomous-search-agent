@@ -6,6 +6,15 @@ class Agent {
         this.r = 6;
         this.moves = []; // Store the list of absolute coordenates to take
     }
+
+    coordToPos(path, cellSize){
+        this.moves = [];
+
+        for(let i = 0; i < path.length; ++i) {
+            let move = path[i].map(function(val) {return val * cellSize + cellSize / 2});
+            this.moves.push(move);
+        }
+        print(this.moves);
     }
 
     move(){
