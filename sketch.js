@@ -1,4 +1,5 @@
 let grid;
+let agent;
 
 function setup() {
     let numRows = 25;
@@ -12,8 +13,10 @@ function setup() {
     ];
 
     grid = new Grid(numRows, numCols, cellSize, terrainColors);
+    agent = new Agent(grid.startPoint[0]*cellSize + cellSize/2, grid.startPoint[1]*cellSize + cellSize/2);
 }
 
 function draw() {
     grid.display();
+    agent.display();
 }
