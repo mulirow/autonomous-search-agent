@@ -17,6 +17,12 @@ class Agent {
         print(this.moves);
     }
 
+    run(){
+        this.move();
+        this.updatePos();
+        this.display();
+    }
+
     move(){
         let target = createVector(this.moves[0][0], this.moves[0][1]);
         let dist = p5.Vector.dist(target, this.pos);
@@ -24,6 +30,10 @@ class Agent {
         this.vel.limit(this.maxVel);
 
         if(dist < this.r/2 && this.moves.length > 1) this.moves.splice(0, 1);
+    }
+
+    updatePos() {
+        this.pos.add(this.vel);
     }
 
     display() {
