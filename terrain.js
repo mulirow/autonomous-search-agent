@@ -30,17 +30,13 @@ class Grid {
         // Randomly select the starting and ending positions within the grid
         let startRow, startCol, endRow, endCol;
         do {
-            startRow = floor(noise(xoff) * this.numRows);
-            xoff += noiseStep;
-            startCol = floor(noise(xoff) * this.numCols);
-            xoff += noiseStep;
+            startRow = floor(random(this.numRows));
+            startCol = floor(random(this.numCols));
         } while (this.terrainColors[this.terrain[startRow][startCol]] == this.terrainColors[0]);
 
         do {
-            endRow = floor(noise(xoff) * this.numRows);
-            xoff += noiseStep;
-            endCol = floor(noise(xoff) * this.numCols);
-            xoff += noiseStep;
+            endRow = floor(random(this.numRows));
+            endCol = floor(random(this.numCols));
         } while (this.terrainColors[this.terrain[endRow][endCol]] == this.terrainColors[0]);
 
         this.startPoint = [startRow, startCol];
