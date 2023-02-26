@@ -2,7 +2,8 @@ class Search {
     constructor(terrainCosts) {
         this.visited = [];
         this.matrix = terrainCosts;
-        this.path = [];
+        this.searchPath = [];
+        this.agentPath = [];
         this.neighborsList = [];
     }
 
