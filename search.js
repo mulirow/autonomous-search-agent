@@ -3,15 +3,6 @@ class DepthFirstSearch {
         this.visited = [];
         this.matrix = terrainCosts;
         this.path = [];
-
-        for (let i = 0; i < this.matrix.length; i++) {
-            this.visited[i] = [];
-            for (let j = 0; j < this.matrix[i].length; j++) {
-                this.visited[i][j] = false;
-            }
-        }
-
-        console.log(this.matrix);
     }
 
     getNeighbors(row, col) {
@@ -44,7 +35,6 @@ class DepthFirstSearch {
         for (let i = 0; i < neighbors.length; i++) {
             let neighbor = neighbors[i];
             if (!this.visited[neighbor[0]][neighbor[1]]) {
-                console.log('fvck me');
                 cellPath = this.dfs(neighbor[0], neighbor[1], target, cellPath);
                 if (cellPath[cellPath.length-1][0] == target[0] && cellPath[cellPath.length-1][1] == target[1]) {
                     return cellPath;
@@ -56,8 +46,14 @@ class DepthFirstSearch {
     }
 
     setPath(startPoint, endPoint) {
-        console.log('fvck');
+        for (let i = 0; i < this.matrix.length; i++) {
+            this.visited[i] = [];
+            for (let j = 0; j < this.matrix[i].length; j++) {
+                this.visited[i][j] = false;
+            }
+        }
+
+        this.path = [];
         this.path = this.dfs(startPoint[0], startPoint[1], endPoint, []);
-        console.log(this.path);
     }
 }
