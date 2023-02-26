@@ -5,6 +5,7 @@ class Agent {
         this.maxVel = 3;
         this.r = 6;
         this.moves = []; // Store the list of absolute coordenates to take
+        this.movesMade = [];
     }
 
     coordToPos(path, cellSize){
@@ -29,7 +30,11 @@ class Agent {
         this.vel.set(p5.Vector.sub(target, this.pos));
         this.vel.limit(this.maxVel / this.moves[0][2]);
 
-        if(dist == 0 && this.moves.length > 1) this.moves.splice(0, 1);
+
+        if(dist == 0 && this.moves.length > 1) {
+            this.movesMade.push(this.moves[0]);
+            this.moves.splice(0, 1);
+        }
     }
 
     updatePos() {
@@ -41,6 +46,10 @@ class Agent {
         stroke(255);
         strokeWeight(2);
         fill(180, 0, 128);
+        rectMode(RADIUS);
+        for(let i = 0; i < this.movesMade.length; i++) {
+            rect(this.movesMade[i][0], this.movesMade[i][1], this.r, this.r);
+        }
         circle(this.pos.x, this.pos.y, 2 * this.r);
         pop();
     }
