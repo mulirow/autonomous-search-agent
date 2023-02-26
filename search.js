@@ -5,6 +5,7 @@ class Search {
         this.searchPath = [];
         this.agentPath = [];
         this.neighborsList = [];
+        this.movesMade = 0;
     }
 
     getNeighbors(row, col) {
@@ -24,21 +25,24 @@ class Search {
         return neighbors;
     }
 
-    display(){
+    display(cellSize){
         push();
         noStroke();
         fill(200, 0, 200);
         rectMode(RADIUS);
-        for(let i = 0; i < this.movesMade.length; i++) {
-            for(let j = 0; j < neighborsList[i].length; j++) {
-                rect(neighborsList[i][j][0] * cellSize + cellSize / 2, neighborsList[i][j][1] * cellSize + cellSize / 2, cellSize / 8, cellSize / 8);
+        this.movesMade += 1;
+        for(let i = 0; (i < this.searchPath.length) && (i < this.movesMade); i++) {
+            if(this.neighborsList[i]){
+                for(let j = 0; j < this.neighborsList[i].length; j++) {
+                    rect(this.neighborsList[i][j][0] * cellSize + cellSize / 2, this.neighborsList[i][j][1] * cellSize + cellSize / 2, cellSize / 8, cellSize / 8);
+                }
             }
         }
         stroke(255);
         strokeWeight(2);
         fill(180, 0, 128);
-        for(let i = 0; i < this.movesMade.length; i++) {
-            rect(this.movesMade[i][0], this.movesMade[i][1], this.r, this.r);
+        for(let i = 0; (i < this.searchPath.length) && (i < this.movesMade); i++) {
+            rect(this.searchPath[i][0] * cellSize + cellSize / 2, this.searchPath[i][1] * cellSize + cellSize / 2, 6, 6);
         }
         pop();
     }
