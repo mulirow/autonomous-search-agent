@@ -27,7 +27,7 @@ function setup() {
 
 function draw() {
     grid.display();
-    agent.run();
+    agent.run(grid.cellSize, search_alg.neighborsList);
 
     if(p5.Vector.dist(agent.pos, createVector(grid.endPoint[0] * grid.cellSize + grid.cellSize / 2, grid.endPoint[1] * grid.cellSize + grid.cellSize / 2)) == 0) {
         grid.startPoint = [...grid.endPoint];

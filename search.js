@@ -3,6 +3,7 @@ class DepthFirstSearch {
         this.visited = [];
         this.matrix = terrainCosts;
         this.path = [];
+        this.neighborsList = [];
     }
 
     getNeighbors(row, col) {
@@ -31,6 +32,7 @@ class DepthFirstSearch {
         }
 
         let neighbors = this.getNeighbors(row, col);
+        this.neighborsList.push(neighbors);
 
         for (let i = 0; i < neighbors.length; i++) {
             let neighbor = neighbors[i];
@@ -54,6 +56,7 @@ class DepthFirstSearch {
         }
 
         this.path = [];
+        this.neighborsList = [];
         this.path = this.dfs(startPoint[0], startPoint[1], endPoint, []);
     }
 }
