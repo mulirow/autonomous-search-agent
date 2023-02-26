@@ -1,12 +1,13 @@
 class Grid {
-    constructor(rows, cols, size, colors) {
+    constructor(rows, cols, size, colors, costs) {
         // Define the size of the grid
         this.numRows = rows;
         this.numCols = cols;
         this.cellSize = size;
 
-        // Define the colors for each type of terrain
+        // Define the color and cost for each type of terrain
         this.terrainColors = colors;
+        this.terrainCosts = [];
 
         // Create a 2D array to store the terrain types for each cell
         this.terrain = [];
@@ -28,6 +29,22 @@ class Grid {
                 xoff += noiseStep;
             }
         }
+
+        // Initialize the terrain costs for each cell according to the terrain type
+        this.terrainCosts = this.terrain.map(row => row.map(val => {
+            switch (val) {
+              case 0:
+                return costs[0];
+              case 1:
+                return costs[1];
+              case 2:
+                return costs[2];
+              case 3:
+                return costs[3];
+              default:
+                return null;
+            }
+          }));
 
         // Randomly select the starting and ending positions within the grid
         let startRow, startCol, endRow, endCol;

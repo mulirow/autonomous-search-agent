@@ -11,7 +11,7 @@ class Agent {
         this.moves = [];
 
         for(let i = 0; i < path.length; ++i) {
-            let move = path[i].map(function(val) {return val * cellSize + cellSize / 2});
+            let move = [path[i][0] * cellSize + cellSize / 2, path[i][1] * cellSize + cellSize / 2, path[i][2]];
             this.moves.push(move);
         }
         print(this.moves);
@@ -27,7 +27,7 @@ class Agent {
         let target = createVector(this.moves[0][0], this.moves[0][1]);
         let dist = p5.Vector.dist(target, this.pos);
         this.vel.set(p5.Vector.sub(target, this.pos));
-        this.vel.limit(this.maxVel);
+        this.vel.limit(this.maxVel / this.moves[0][2]);
 
         if(dist == 0 && this.moves.length > 1) this.moves.splice(0, 1);
     }
