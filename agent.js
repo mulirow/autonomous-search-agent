@@ -29,7 +29,7 @@ class Agent {
         this.vel.set(p5.Vector.sub(target, this.pos));
         this.vel.limit(this.maxVel);
 
-        if(dist < this.r/2 && this.moves.length > 1) this.moves.splice(0, 1);
+        if(dist == 0 && this.moves.length > 1) this.moves.splice(0, 1);
     }
 
     updatePos() {
