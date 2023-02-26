@@ -10,6 +10,7 @@ class Agent {
 
     coordToPos(path, cellSize){
         this.moves = [];
+        this.movesMade = [];
 
         for(let i = 0; i < path.length; ++i) {
             let move = [path[i][0] * cellSize + cellSize / 2, path[i][1] * cellSize + cellSize / 2, path[i][2]];
