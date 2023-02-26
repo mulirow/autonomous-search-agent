@@ -25,7 +25,7 @@ function setup() {
 function draw() {
     grid.display();
     search_alg.display(grid.cellSize);
-    agent.run(grid.cellSize);
+    agent.run();
 
     // Reset the search mechanisms and defines a new food location
     if(p5.Vector.dist(agent.pos, createVector(grid.endPoint[0] * grid.cellSize + grid.cellSize / 2, grid.endPoint[1] * grid.cellSize + grid.cellSize / 2)) == 0) {
@@ -38,7 +38,6 @@ function draw() {
         grid.endPoint = [endRow, endCol];
 
         search_alg.setPath(grid.startPoint, grid.endPoint);
-
         agent.coordToPos(search_alg.agentPath, grid.cellSize);
     }
 }

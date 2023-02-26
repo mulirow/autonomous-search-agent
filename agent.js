@@ -19,10 +19,10 @@ class Agent {
         print(this.moves);
     }
 
-    run(cellSize, neighborsList){
+    run(){
         this.move();
         this.updatePos();
-        this.display(cellSize, neighborsList);
+        this.display();
     }
 
     move(){
@@ -42,19 +42,12 @@ class Agent {
         this.pos.add(this.vel);
     }
 
-    display(cellSize, neighborsList) {
+    display() {
         push();
-        noStroke();
-        fill(200, 0, 200);
         rectMode(RADIUS);
-        for(let i = 0; i < this.movesMade.length; i++) {
-            for(let j = 0; j < neighborsList[i].length; j++) {
-                rect(neighborsList[i][j][0] * cellSize + cellSize / 2, neighborsList[i][j][1] * cellSize + cellSize / 2, cellSize / 8, cellSize / 8);
-            }
-        }
         stroke(255);
         strokeWeight(2);
-        fill(180, 0, 128);
+        fill(180, 200, 128);
         for(let i = 0; i < this.movesMade.length; i++) {
             rect(this.movesMade[i][0], this.movesMade[i][1], this.r, this.r);
         }
