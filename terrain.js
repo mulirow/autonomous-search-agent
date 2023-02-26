@@ -21,8 +21,10 @@ class Grid {
         // Initialize the terrain types for each cell randomly
         for (let row = 0; row < this.numRows; row++) {
             this.terrain[row] = [];
+        }
+        for (let row = 0; row < this.numRows; row++) {
             for (let col = 0; col < this.numCols; col++) {
-                this.terrain[row][col] = floor(noise(xoff) * this.terrainColors.length);
+                this.terrain[col][row] = floor(noise(xoff) * this.terrainColors.length);
                 xoff += noiseStep;
             }
         }
@@ -49,7 +51,7 @@ class Grid {
             for (let col = 0; col < this.numCols; col++) {
                 let terrainType = this.terrain[row][col]
                 fill(this.terrainColors[terrainType]);
-                rect(col * this.cellSize, row * this.cellSize, this.cellSize, this.cellSize);
+                rect(row * this.cellSize, col * this.cellSize, this.cellSize, this.cellSize);
             }
         }
 
