@@ -28,4 +28,18 @@ function setup() {
 function draw() {
     grid.display();
     agent.run();
+
+    if(p5.Vector.dist(agent.pos, createVector(grid.endPoint[0] * grid.cellSize + grid.cellSize / 2, grid.endPoint[1] * grid.cellSize + grid.cellSize / 2)) == 0) {
+        grid.startPoint = [...grid.endPoint];
+        let endRow, endCol;
+        do {
+            endRow = floor(random(grid.numRows));
+            endCol = floor(random(grid.numCols));
+        } while (grid.terrainColors[grid.terrain[endRow][endCol]] == grid.terrainColors[0]);
+        grid.endPoint = [endRow, endCol];
+
+        search_alg.setPath(grid.startPoint, grid.endPoint);
+
+        agent.coordToPos(search_alg.path, grid.cellSize);
+    }
 }
