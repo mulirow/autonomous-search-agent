@@ -16,19 +16,18 @@ function setup() {
 
     grid = new Grid(numRows, numCols, cellSize, terrainColors, costs);
     agent = new Agent(grid.startPoint[0]*cellSize + cellSize/2, grid.startPoint[1]*cellSize + cellSize/2);
+    search_alg = new BreadthFirstSearch(grid.terrainCosts);
 
-    // User selects search algorithm
-    // ...
-    search_alg = new DepthFirstSearch(grid.terrainCosts);
     search_alg.setPath(grid.startPoint, grid.endPoint);
-    // Search algorithm is executed and returns an array of tuples (x, y) indicating the order of cell indexes the agent passed to reach destination
     agent.coordToPos(search_alg.agentPath, cellSize);
 }
 
 function draw() {
     grid.display();
-    agent.run(grid.cellSize, search_alg.neighborsList);
+    search_alg.display(grid.cellSize);
+    agent.run(grid.cellSize);
 
+    // Reset the search mechanisms and defines a new food location
     if(p5.Vector.dist(agent.pos, createVector(grid.endPoint[0] * grid.cellSize + grid.cellSize / 2, grid.endPoint[1] * grid.cellSize + grid.cellSize / 2)) == 0) {
         grid.startPoint = [...grid.endPoint];
         let endRow, endCol;
