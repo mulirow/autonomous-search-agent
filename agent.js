@@ -6,11 +6,13 @@ class Agent {
         this.r = 6;
         this.moves = []; // Store the list of absolute coordenates to take
         this.movesMade = [];
+        this.moveCount = 0;
     }
 
     coordToPos(path, cellSize){
         this.moves = [];
         this.movesMade = [];
+        this.moveCount = path.length;
 
         for(let i = 0; i < path.length; ++i) {
             let move = [path[i][0] * cellSize + cellSize / 2, path[i][1] * cellSize + cellSize / 2, path[i][2]];
@@ -21,7 +23,7 @@ class Agent {
     run(){
         this.move();
         this.updatePos();
-        this.display();
+        return this.display();
     }
 
     move(){
@@ -52,5 +54,8 @@ class Agent {
         }
         circle(this.pos.x, this.pos.y, 2 * this.r);
         pop();
+
+        if(this.movesMade.length == this.moveCount) return 1;
+        return 0;
     }
 }

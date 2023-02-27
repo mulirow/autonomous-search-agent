@@ -45,5 +45,7 @@ class Search {
             rect(this.searchPath[i][0] * cellSize + cellSize / 2, this.searchPath[i][1] * cellSize + cellSize / 2, 6, 6);
         }
         pop();
+        if(this.movesMade == this.searchPath.length) return 1;
+        return 0;
     }
 }
