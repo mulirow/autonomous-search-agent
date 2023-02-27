@@ -49,8 +49,6 @@ class BreadthFirstSearch extends Search{
             current = this.parents[current[0]][current[1]];
             optimalPath.unshift([current[0], current[1], this.matrix[current[0]][current[1]]]);
         }
-        console.log('a');
-        console.log(optimalPath);
         return optimalPath;
     }
 
