@@ -48,4 +48,17 @@ class Search {
         if(this.movesMade == this.searchPath.length) return 1;
         return 0;
     }
+
+    displayOptPath(cellSize){
+        push();
+        fill(0, 0, 0);
+        rectMode(RADIUS);
+        this.movesMade += 1;
+        for(let i = 1; (i < this.agentPath.length - 1) && (i < this.movesMade); i++) {
+            circle(this.agentPath[i][0] * cellSize + cellSize / 2, this.agentPath[i][1] * cellSize + cellSize / 2, 12);
+        }
+        pop();
+        if(this.movesMade == this.agentPath.length) return 1;
+        return 0;
+    }
 }

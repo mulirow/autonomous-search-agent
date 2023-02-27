@@ -1,6 +1,7 @@
 let grid;
 let agent;
 let search_alg;
+let opt_alg;
 let drawState = 0;
 
 function setup() {
@@ -17,16 +18,22 @@ function setup() {
 
     grid = new Grid(numRows, numCols, cellSize, terrainColors, costs);
     agent = new Agent(grid.startPoint[0]*cellSize + cellSize/2, grid.startPoint[1]*cellSize + cellSize/2);
-    search_alg = new DepthFirstSearch(grid.terrainCosts);
+    // Algorithm picked by the user
+    search_alg = new AStar(grid.terrainCosts); 
+
+    // Algorithm that runs in the background to show the optimal path
+    opt_alg = new UniformCostSearch(grid.terrainCosts);
 
     search_alg.setPath(grid.startPoint, grid.endPoint);
+    opt_alg.setPath(grid.startPoint, grid.endPoint);
     agent.coordToPos(search_alg.agentPath, cellSize);
 }
 
 function draw() {
     grid.display();
     if(drawState >= 0) drawState += search_alg.display(grid.cellSize);
-    if(drawState >= 1) drawState += agent.run();
+    if(drawState >= 1) drawState += opt_alg.displayOptPath(grid.cellSize);
+    if(drawState >= 2) drawState += agent.run();
 
     // Reset the search mechanisms and defines a new food location
     if(p5.Vector.dist(agent.pos, createVector(grid.endPoint[0] * grid.cellSize + grid.cellSize / 2, grid.endPoint[1] * grid.cellSize + grid.cellSize / 2)) == 0) {
@@ -40,6 +47,7 @@ function draw() {
 
         drawState = 0;
         search_alg.setPath(grid.startPoint, grid.endPoint);
+        opt_alg.setPath(grid.startPoint, grid.endPoint);
         agent.coordToPos(search_alg.agentPath, grid.cellSize);
     }
 }
