@@ -1,4 +1,4 @@
-class ASharp extends Search{
+class AStar extends Search{
     constructor(terrainCosts){
         super(terrainCosts);
         this.pq = new PriorityQueue();
@@ -39,7 +39,7 @@ class ASharp extends Search{
                 // Check if there is a path to the neighbor
                 let neighborRow = neighbors[i][0];
                 let neighborCol = neighbors[i][1];
-                let cost = this.mhtDist(neighborRow, neighborCol, target) + this.matrix[startRow][startCol];
+                let cost = this.mhtDist(neighborRow, neighborCol, target) ** 2 + this.matrix[neighborRow][neighborCol];
     
                 // Check if the neighbor has already been visited
                 if (!this.visited[neighborRow][neighborCol]) {
