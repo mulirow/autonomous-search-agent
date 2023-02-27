@@ -49,7 +49,7 @@ class Agent {
         stroke(255);
         strokeWeight(2);
         fill(180, 200, 128);
-        for(let i = 0; i < this.movesMade.length; i++) {
+        for(let i = 1; i < this.movesMade.length; i++) {
             rect(this.movesMade[i][0], this.movesMade[i][1], this.r, this.r);
         }
         circle(this.pos.x, this.pos.y, 2 * this.r);

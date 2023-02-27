@@ -73,9 +73,14 @@ class Grid {
         }
 
         // Draw the starting and ending positions
-        fill(255, 0, 0);
-        rect(this.startPoint[0] * this.cellSize, this.startPoint[1] * this.cellSize, this.cellSize, this.cellSize);
         fill(0, 0, 255);
-        rect(this.endPoint[0] * this.cellSize, this.endPoint[1] * this.cellSize, this.cellSize, this.cellSize);
+        triangle(this.startPoint[0] * this.cellSize + this.cellSize / 2, this.startPoint[1] * this.cellSize,
+                 this.startPoint[0] * this.cellSize + this.cellSize , this.startPoint[1] * this.cellSize + this.cellSize * 3/4,
+                 this.startPoint[0] * this.cellSize, this.startPoint[1] * this.cellSize + this.cellSize * 3/4);
+        // rect(this.startPoint[0] * this.cellSize, this.startPoint[1] * this.cellSize, this.cellSize, this.cellSize);
+        fill(255, 0, 0);
+        triangle(this.endPoint[0] * this.cellSize + this.cellSize / 2, this.endPoint[1] * this.cellSize,
+        this.endPoint[0] * this.cellSize + this.cellSize , this.endPoint[1] * this.cellSize + this.cellSize * 3/4,
+        this.endPoint[0] * this.cellSize, this.endPoint[1] * this.cellSize + this.cellSize * 3/4);
     }
 }
