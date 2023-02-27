@@ -16,7 +16,6 @@ class Agent {
             let move = [path[i][0] * cellSize + cellSize / 2, path[i][1] * cellSize + cellSize / 2, path[i][2]];
             this.moves.push(move);
         }
-        print(this.moves);
     }
 
     run(){
