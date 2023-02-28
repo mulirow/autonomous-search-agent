@@ -1,4 +1,4 @@
-## How to Run
+## Autonomous Search Agent
 
 The project is a visual implementation of five of the most popular search algorithms. We have created a simple map with a smart agent and a food located in it, so that the main goal is to find the path between the start position of the agent and it's final position, where the food is located.
 
@@ -8,7 +8,7 @@ The project is a visual implementation of five of the most popular search algori
 - Ocean > Blue Squares
 - Obstacles > Gray Squares
 
-## Search
+### Search
 - Start point > Blue triangle
 - End point > Red triangle
 - Visited cells > Pink squares
@@ -22,6 +22,7 @@ The project is a visual implementation of five of the most popular search algori
 <img width="546" alt="image" src="https://user-images.githubusercontent.com/60718529/221849566-d92cfba0-2ce7-4f34-a56e-d0724a707a05.png">
 <img width="546" alt="image" src="https://user-images.githubusercontent.com/60718529/221849609-1bf4db95-7c20-457a-b304-f91a99173648.png">
 
+### How to Run
 
 To run this project, simply open index.html.
 
