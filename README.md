@@ -9,8 +9,8 @@ The project is a visual implementation of five of the most popular search algori
 - Obstacles > Gray Squares
 
 ## Search
-- Start point > Red triangle
-- End point > Blue triangle
+- Start point > Blue triangle
+- End point > Red triangle
 - Visited cells > Pink squares
 - Neighbor cells > Tiny Pink squares
 - Optimal path > Black dots
